@@ -20,6 +20,13 @@ from database import get_database
 from ingestion.query import list_runs, get_latest_run, list_live_listings
 from waitlist import add_waitlist_email
 
+# Import data layer API routes
+try:
+    from api.routes import router as cars_router
+    HAS_DATA_LAYER = True
+except ImportError:
+    HAS_DATA_LAYER = False
+
 app = FastAPI(
     title="FindingMyCar",
     description="AI-driven intent-to-match system for finding your next car",
@@ -34,6 +41,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include data layer API routes if available
+if HAS_DATA_LAYER:
+    app.include_router(cars_router, prefix="/api")
 
 # Static files
 STATIC_DIR = Path(__file__).parent / "static"
@@ -275,5 +286,5 @@ def _generate_suggestions(intent: UserIntent, matches: List[MatchResult]) -> Lis
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8001, reload=True)
 

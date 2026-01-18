@@ -65,3 +65,4 @@ function SearchBox({ onSearch, isLoading, initialValue = '' }) {
 
 export default SearchBox
 
+

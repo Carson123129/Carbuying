@@ -26,3 +26,4 @@ def fetch() -> Dict[str, List[Dict]]:
     listings = data.get("listings", [])
     return {"cars": [], "listings": listings}
 
+

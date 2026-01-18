@@ -47,3 +47,4 @@ def add_waitlist_email(email: str, source: str = "landing") -> bool:
     _save_waitlist(entries)
     return True
 
+

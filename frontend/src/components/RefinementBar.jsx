@@ -24,3 +24,4 @@ function RefinementBar({ suggestions, onRefine, isLoading }) {
 
 export default RefinementBar
 
+

@@ -14,3 +14,4 @@ def fetch() -> Dict[str, List[Dict]]:
         listing["source"] = listing.get("source", "mock")
     return {"cars": cars, "listings": listings}
 
+

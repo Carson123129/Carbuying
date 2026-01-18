@@ -19,3 +19,4 @@ def marketcheck_config() -> dict:
         "start": get_env("MARKETCHECK_START", "0"),
     }
 
+

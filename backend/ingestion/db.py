@@ -171,3 +171,4 @@ def mark_missing_listings_inactive(conn: sqlite3.Connection, source: str, seen_i
     )
     return cursor.rowcount
 
+

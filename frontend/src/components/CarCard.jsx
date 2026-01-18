@@ -175,3 +175,4 @@ function CarCard({ match, rank, isExpanded, onExpand }) {
 
 export default CarCard
 
+

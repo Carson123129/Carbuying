@@ -42,3 +42,4 @@ def list_live_listings(limit: int = 50) -> List[Dict]:
         ).fetchall()
         return [dict(row) for row in rows]
 
+
