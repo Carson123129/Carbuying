@@ -1,0 +1,58 @@
+.car-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.results-header h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.results-count {
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Loading State */
+.car-results.loading .results-header h2 {
+  color: var(--text-tertiary);
+}
+
+.loading-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.skeleton-card {
+  height: 120px;
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 0%,
+    var(--bg-tertiary) 50%,
+    var(--bg-card) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-lg);
+  animation: shimmer 1.5s infinite;
+}
+
+/* Empty State */
+.car-results.empty {
+  text-align: center;
+  padding: var(--space-3xl);
+}
+
+.car-results.empty p {
+  color: var(--text-tertiary);
+  font-size: 1.125rem;
+}
+

@@ -1,0 +1,124 @@
+.search-box {
+  display: flex;
+  gap: var(--space-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--space-lg);
+  padding-right: var(--space-xl);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  color: var(--text-primary);
+  resize: none;
+  transition: all var(--transition-base);
+  line-height: 1.5;
+}
+
+.search-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-glow);
+  background: var(--bg-tertiary);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.search-hint {
+  position: absolute;
+  bottom: var(--space-sm);
+  right: var(--space-md);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #d97706 100%);
+  color: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 140px;
+  transition: all var(--transition-base);
+}
+
+.search-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.search-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.search-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.search-icon {
+  font-size: 1.25rem;
+  transition: transform var(--transition-fast);
+}
+
+.search-btn:hover .search-icon {
+  transform: translateX(4px);
+}
+
+/* Loading dots */
+.search-loading {
+  display: flex;
+  gap: 4px;
+}
+
+.search-loading .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--bg-primary);
+  border-radius: 50%;
+  animation: pulse 1s infinite;
+}
+
+.search-loading .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.search-loading .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@media (max-width: 640px) {
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+
+  .search-text {
+    display: inline;
+  }
+}
+

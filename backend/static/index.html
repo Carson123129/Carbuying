@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindingMyCar — Find Your Next Car</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div id="app">
+        <div class="fallback-banner" id="fallbackBanner">
+            <div class="fallback-banner-content">
+                <div class="fallback-banner-title">FindingMyCar is building a new way to find your next car.</div>
+                <div class="fallback-banner-subtitle">Leave your email for early access updates.</div>
+                <form class="fallback-banner-form" action="/api/waitlist" method="post">
+                    <input type="email" name="email" placeholder="you@example.com" required>
+                    <input type="hidden" name="source" value="landing">
+                    <button type="submit">Join early access</button>
+                </form>
+            </div>
+        </div>
+        <header class="app-header">
+            <div class="logo" onclick="resetSearch()">
+                <span class="logo-icon">◈</span>
+                <span class="logo-text">FindingMyCar</span>
+            </div>
+            <button class="reset-btn hidden" id="resetBtn" onclick="resetSearch()">
+                New Search
+            </button>
+        </header>
+
+        <main class="app-main">
+            <!-- Hero Section (Initial State) -->
+            <div class="hero-section" id="heroSection">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Find your car.
+                        <br>
+                        <span class="hero-accent">Just describe what you want.</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        No filters. No dropdowns. Just tell us what matters to you.
+                    </p>
+                    
+                    <form class="search-box" onsubmit="handleSearch(event)">
+                        <div class="search-input-wrapper">
+                            <textarea 
+                                id="searchInput"
+                                class="search-input" 
+                                placeholder="Describe your perfect car..."
+                                rows="2"
+                            ></textarea>
+                            <div class="search-hint">Press Enter to search</div>
+                        </div>
+                        <button type="submit" class="search-btn" id="searchBtn">
+                            <span class="search-icon">→</span>
+                            <span class="search-text">Find Cars</span>
+                        </button>
+                    </form>
+                    
+                    <div class="hero-examples">
+                        <span class="examples-label">Try:</span>
+                        <button class="example-chip" onclick="tryExample('Something like a BMW 340i but cheaper, AWD, still fast, under 35k, not boring')">
+                            "Like a BMW 340i but cheaper"
+                        </button>
+                        <button class="example-chip" onclick="tryExample('Fast but reliable under 30k')">
+                            "Fast but reliable under 30k"
+                        </button>
+                        <button class="example-chip" onclick="tryExample('Good in snow, still exciting, under 40k')">
+                            "Good in snow, still exciting"
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section (After Search) -->
+            <div class="results-section hidden" id="resultsSection">
+                <div class="intent-summary" id="intentSummary"></div>
+                <div class="refinement-bar" id="refinementBar"></div>
+                <div class="car-results" id="carResults"></div>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message hidden" id="errorMessage">
+                <span class="error-icon">⚠</span>
+                <span id="errorText"></span>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>An intent-to-reality engine. Built to understand what you actually want. <span class="footer-domain">findingmycar.com</span></p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
+
